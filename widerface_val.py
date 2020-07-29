@@ -229,7 +229,7 @@ net = build_ssd('test', cfg['min_dim'], num_classes) # initialize SSD
 net.load_state_dict(torch.load(args.trained_model))
 
 from torch2trt import torch2trt
-data = torch.randn((1, 3, 224, 224)).cuda().half()
+data = torch.randn((1, 3, 640, 640)).cuda().half()
 net = torch2trt(net, [data], fp16_mode=True)
 
 net.cuda()
